@@ -31,13 +31,11 @@ export default {
       document.getElementById('yourAudioTag').play()
       console.log(1234)
       event.stopPropagation()
-      event.preventDefault();
     },
     click2 (event) {
       document.getElementById('yourAudioTag1').currentTime = 0
       document.getElementById('yourAudioTag1').play()
       console.log(1234)
-      event.preventDefault();
     }
   }
 }
