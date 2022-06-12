@@ -22,7 +22,7 @@ export default {
   },
   computed: {
     checkgo1() {
-      return this.click1 ? {backgroundImage: 'url(' + require('../assets/go1.png') + ')'} : ''
+      return this.click1 ? {cursor: 'url(' + require('../assets/go1.png') + '), auto'} : ''
     }
   },
   methods: {
