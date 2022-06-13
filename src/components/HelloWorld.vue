@@ -1,11 +1,11 @@
 <template>
   <div>
-    <img class="image custom flying" src="../assets/image.png" alt="" @click="click" :style="[checkgo1]">
+    <img class="image custom flying" src="../assets/image.png" alt="" @click="click" :style="[checkgo1]"  style="-ms-touch-action: manipulation; touch-action: manipulation;">
     <audio id="yourAudioTag" controls style="display: none">
-      <source src="../assets/ting.mp3" type="audio/ogg">
-      <source id="" src="../assets/ting.mp3" type="audio/mpeg">
+      <source src="../assets/tiengmo_2.mp3" type="audio/ogg">
+      <source id="" src="../assets/tiengmo_2.mp3" type="audio/mpeg">
     </audio>
-    <img class="image right" src="../assets/image2.png" alt="" @click="click2">
+    <img class="image right" src="../assets/image2.png" alt="" @click="click2" style="-ms-touch-action: manipulation; touch-action: manipulation;">
     <audio id="yourAudioTag1" controls style="display: none">
       <source src="../assets/tiengchuongchua_3.mp3" type="audio/ogg">
       <source id="" src="../assets/tiengchuongchua_3.mp3" type="audio/mpeg">
@@ -30,7 +30,7 @@ export default {
       document.getElementById('yourAudioTag').currentTime = 0
       document.getElementById('yourAudioTag').play()
       console.log(1234)
-      event.stopPropagation()
+      // event.stopPropagation()
     },
     click2 (event) {
       document.getElementById('yourAudioTag1').currentTime = 0
