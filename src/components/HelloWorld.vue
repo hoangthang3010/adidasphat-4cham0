@@ -11,24 +11,24 @@
       <source id="" src="../assets/tiengchuongchua_3.mp3" type="audio/mpeg">
     </audio> -->
     <div class="container">
-      <div class="content-top">
+      <div class="content-top" v-if="index">
         <div class="temperature">{{isOn ? temperature : ''}}</div>
         <img class="iharmonic" v-if="!isOn" src="../assets/dieuhoa-off.png"/>
         <img class="iharmonic" v-else src="../assets/dieuhoa.gif"/>
       </div>
       <div class="content-control">
         <div class="temperature" v-show="isOn">{{isOn ? temperature : ''}}</div>
-        <input class="btn-control btn-on" type="button" :value="!isOn ? 'Bật' : 'Tắt'" @click="isOn = !isOn;">
+        <input class="btn-control btn-on" type="button" :value="!isOn ? 'Bật' : 'Tắt'" @click="onClickOn">
         <div class="box-increase btn-control">
           <!-- <svg width="24" height="13" viewBox="0 0 240 130" style="top: 0; position: absolute; transform: translate(-50%, 0);"
               xmlns="http://www.w3.org/2000/svg"
                @click="temperature < 40 ? temperature++ : temperature">
             <polygon points="120,0 240,130 0,130"/>
           </svg> -->
-          <input class="btn-control btn-increase" type="button" value="Tăng" @click="temperature < 30 ? temperature++ : temperature">
+          <input class="btn-control btn-increase" type="button" value="Tăng" @click="isOn && temperature < 30 ? temperature++ : temperature">
         </div>
         <div class="box-decrease btn-control">
-          <input class="btn-decrease" type="button" value="Giảm" @click="temperature > 16 ? temperature-- : 16">
+          <input class="btn-decrease" type="button" value="Giảm" @click="isOn && temperature > 16 ? temperature-- : 16">
         </div>
         <img class="remote-control" src="../assets/remote-control.png"/>
       </div>
@@ -42,7 +42,9 @@ export default {
     return {
       click1: true,
       temperature: 30,
-      isOn: true
+      isOn: false,
+      sourceGif: require('../assets/dieuhoa_1.gif'),
+      index: 1
     }
   },
   computed: {
@@ -61,6 +63,14 @@ export default {
       document.getElementById('yourAudioTag1').currentTime = 0
       document.getElementById('yourAudioTag1').play()
       console.log(1234)
+    },
+    onClickOn(){
+      this.isOn = !this.isOn;
+      setInterval(() => {
+        // this.sourceGif = require('../assets/dieuhoa_1.gif')
+        this.index += 1
+        // this.$forceUpdate();
+      }, 5900);
     }
   }
 }
@@ -135,15 +145,15 @@ font-family: inherit;
   opacity: 0;
 }
 .box-increase{
-  top: 150px;
-  left: 47px;
-  width: 24px;
-  height: 13px;
+  top: 152px;
+  left: 49px;
+  width: 22px;
+  height: 12px;
   &::after{
     position: absolute;
     content: "";
-    top: -3px;
-    left: 18px;
+    top: -6px;
+    left: 16px;
     width: 6px;
     height: 18px;
     transform: rotate(135deg);
@@ -151,7 +161,7 @@ font-family: inherit;
   &::before{
     position: absolute;
     content: "";
-    top: -3px;
+    top: -6px;
     left: 0px;
     width: 6px;
     height: 18px;
@@ -161,14 +171,14 @@ font-family: inherit;
 }
 .box-decrease{
   top: 180px;
-  left: 47px;
-  width: 24px;
+  left: 49px;
+  width: 21px;
   height: 13px;
   &::after{
     position: absolute;
     content: "";
-    top: -3px;
-    left: 18px;
+    top: 1px;
+    left: -1px;
     width: 6px;
     height: 18px;
     transform: rotate(135deg);
@@ -176,8 +186,8 @@ font-family: inherit;
   &::before{
     position: absolute;
     content: "";
-    top: 0px;
-    left: 18px;
+    top: 1px;
+    left: 16px;
     width: 6px;
     height: 18px;
     -webkit-transform: rotate(135deg);
@@ -189,11 +199,17 @@ font-family: inherit;
   height: 100%;
   position: relative;
   opacity: 0;
+  border: none;
+  padding: 0;
+  top: -4px;
 }
 .btn-decrease{
   width: 100%;
   height: 100%;
   position: relative;
   opacity: 0;
+  border: none;
+  padding: 0;
+  top: -3px;
 }
 </style>
