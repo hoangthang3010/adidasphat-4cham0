@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div style="text-align: center">Sang con</div>
     <!-- <img class="image custom flying" src="../assets/image.png" alt="" @click="click" :style="[checkgo1]"  style="-ms-touch-action: manipulation; touch-action: manipulation;">
     <audio id="yourAudioTag" controls style="display: none">
       <source src="../assets/tiengmo_2.mp3" type="audio/ogg">
